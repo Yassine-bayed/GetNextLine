@@ -1,9 +1,13 @@
+<style>
+span{color: #ADD8E6 !important}
+</style>
+
 <h1 align = "center">Get Next Line  | 42 Project</h1>
 
 <strong>Brief :</strong>  
 
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; The get_next_line() is a function that reads lines with a newline character ('\n') from a file descriptor and returns the read line as a string.<br>
- - The function takes a **single parameter**, an <u>integer file descriptor fd</u> which represents the file or stream to be read. <br>It should work as expected both when reading from a <span style="color: #ADD8E6	">**file**</span> and when reading from the <span style="color:#ADD8E6	">**standard input**</span>.<br>
+ - The function takes a **single parameter**, an <u>integer file descriptor fd</u> which represents the file or stream to be read. <br>It should work as expected both when reading from a <span>**file**</span> and when reading from the <span>**standard input**</span>.<br>
  - The function should store the characters in a buffer:
 
    - When a newline character is encountered, the buffer is null-terminated and returned. <br>
