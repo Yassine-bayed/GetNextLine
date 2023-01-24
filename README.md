@@ -19,10 +19,11 @@
    - **Header File (** get_next_line.h **)** : must at least contain the prototype of the get_next_line() function.
    - **Additional functions :** need to be in the <u>get_next_line_utils.c</u> file.
  - **External functs :**  read, malloc, free.
-    - The buffer size for read() can be defined by the macro **-D BUFFER_SIZE=n** in the compilation, but you need to choose a **Default Value Of Your Choice**. The code should be able to <u>compile with or without the flag</u>.
+    - The buffer size for read() can be defined by the macro **-D BUFFER_SIZE=n** ``` eg: gcc -Wall -Wextra -Werror -D BUFFER_SIZE=42 <files>.c```in the compilation, but you need to choose a **Default Value Of Your Choice**. The code should be able to <u>compile with or without the flag</u>.
     - Function should be memory leak free.
 - **Forbidden :**
   - You are not allowed to use your libft in this project.
   - lseek() is forbidden.
   - Global variables are forbidden.
+- ℹ️ :information_source: **:**
    <h2>Bonus Part:</h2>
