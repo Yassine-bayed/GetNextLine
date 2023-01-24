@@ -18,12 +18,15 @@
    - **Main File** **(** get_next_line.c **):** 
    - **Header File (** get_next_line.h **)** : must at least contain the prototype of the get_next_line() function.
    - **Additional functions :** need to be in the <u>get_next_line_utils.c</u> file.
- - **External functs :**  read, malloc, free.
+ - **External functs :**  ***read***, ***malloc***, ***free***.
     - The buffer size for read() can be defined by the macro **-D BUFFER_SIZE=n** ``` eg: gcc -Wall -Wextra -Werror -D BUFFER_SIZE=42 <files>.c```in the compilation, but you need to choose a **Default Value Of Your Choice**. The code should be able to <u>compile with or without the flag</u>.
+     <br>&nbsp;  &nbsp; &nbsp;  &nbsp; 💡 : `Does your function still work if the BUFFER_SIZE value is 9999? If
+it is 1? 10000000? Do you know why?`
     - Function should be memory leak free.
 - **Forbidden :**
   - You are not allowed to use your libft in this project.
   - lseek() is forbidden.
-  - Global variables are forbidden.
-- ℹ️ :information_source: **:**
+  - Global variables are forbidden.<br><br>
+
+  > ℹ️  **:** Try to read as little as possible each time get_next_line() is called. If you encounter a new line, you have to return the current line. Don’t read the whole file and then process each line 
    <h2>Bonus Part:</h2>
