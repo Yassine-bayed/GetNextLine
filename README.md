@@ -55,6 +55,7 @@ Once passed, do not hesitate to add your<br>
 - [About Static Variable | Dynamic Memory | File Descriptors](https://www.c-programming-simple-steps.com/static-keyword-in-c.html)
 - [Handling a File by its Descriptor in C](https://www.codequoi.com/en/handling-a-file-by-its-descriptor-in-c/)
 - [WhiteBoard](https://beta.tldraw.com/r/v2_c_k644zKgNiMAt3ND_6fl0G)
-
+/**
 ---
 <h1 align = "center">MY PROCESS</h1>
+**/
