@@ -6,27 +6,39 @@
 /*   By: ybayed <ybayed@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 14:12:32 by ybayed            #+#    #+#             */
-/*   Updated: 2023/02/15 20:25:24 by ybayed           ###   ########.fr       */
+/*   Updated: 2023/03/24 15:08:06 by ybayed           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include "get_next_line.h"
-#include <unistd.h>
 
-char *read_line(int fd, char *static_buffer)
+char *StoreInStaticBuffer(int fd, char *static_buffer)
 {
 	char	*buffer;
-	int		size;
+	int		readed;
 
 	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
 		return (NULL);
-	size = 1;
+	readed = 1;
+	while (!ft_strchr(static_buffer, '\n') && size != 0)
+	{
+		readed = read(fd, buffer, BUFFER_SIZE);
+		if (readed == -1)
+		{
+			free(static_buffer);
+			free(buffer);
+			return (NULL);
+		}
+		buffer[readed] = '\0';
+		static_buffer = ft_strjoin(static_buffer, buffer);
+	}
+	free(buffer);
 	return (static_buffer);
 }
-char *fixed_line(char *static_buffer)
+char *LineFromBuffer(char *static_buffer)
 {
 	int		i;
 	char	*line;
@@ -50,46 +62,45 @@ char *fixed_line(char *static_buffer)
 	line[i] = '\0';
 	return (line);
 }
-char *next_line(char *static_buffer)
+char *save_remnant(char *static_buffer)
 {
 	int		i;
 	int		j;
-	char 	*tab;
+	char 	*remnant;
 
 	i = 0;
-	while (static_buffer[i] && static_buffer != '\n')
+	while (static_buffer[i] && static_buffer[i] != '\n')
 		i++;
 	if(!static_buffer)
 	{
 		free(static_buffer);
 		return(NULL);
 	}
-	tab = (char *)malloc(sizeof(char) * (ft_strlen(static_buffer) - i + 1));
-	if(!tab)
+	remnant = (char *)malloc(sizeof(char) * (ft_strlen(static_buffer) - i + 1));
+	if(!remnant)
 		return(NULL);
 	i++;
 	j = 0;
 	while(static_buffer[i])
-		tab[j++] = static_buffer[i++];
-	tab[j] = '\0';
+		remnant[j++] = static_buffer[i++];
+	remnant[j] = '\0';
 	free(static_buffer);
-	return (tab);
+	return (remnant);
 }
-
 
 char *get_next_line(int fd)
 {
-	char            *ln;
+	char            *line;
 	static char     *static_buffer ;
     
     if (fd < 0 || BUFFER_SIZE <= 0)
         return (NULL);
-    static_buffer = read_line(fd, static_buffer);
+    static_buffer = StoreInStaticBuffer(fd, static_buffer);
     if(!static_buffer)
         return (NULL);
-    ln = fixed_line(static_buffer);
-    static_buffer = next_line(static_buffer);
-    return (ln);
+    line = LineFromBuffer(static_buffer);
+    static_buffer = save_remnant(static_buffer);
+    return (line);
 }
 
 // int main(int argc, char **argv)
