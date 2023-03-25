@@ -6,7 +6,7 @@
 /*   By: ybayed <ybayed@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 14:12:32 by ybayed            #+#    #+#             */
-/*   Updated: 2023/03/24 15:08:06 by ybayed           ###   ########.fr       */
+/*   Updated: 2023/03/25 00:29:31 by ybayed           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ char *StoreInStaticBuffer(int fd, char *static_buffer)
 	char	*buffer;
 	int		readed;
 
-	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1)); 
 	if (!buffer)
 		return (NULL);
 	readed = 1;
-	while (!ft_strchr(static_buffer, '\n') && size != 0)
+	while (!ft_strchr(static_buffer, '\n') && readed != 0)
 	{
 		readed = read(fd, buffer, BUFFER_SIZE);
 		if (readed == -1)
@@ -58,7 +58,11 @@ char *LineFromBuffer(char *static_buffer)
 		i++;
 	}
 	if(static_buffer[i] == '\n')
-		line[i++] = '\n';
+	{ 		
+		line[i] = static_buffer[i]; 
+		i++;
+	}
+		// line[i++] = '\n';
 	line[i] = '\0';
 	return (line);
 }
@@ -76,7 +80,7 @@ char *save_remnant(char *static_buffer)
 		free(static_buffer);
 		return(NULL);
 	}
-	remnant = (char *)malloc(sizeof(char) * (ft_strlen(static_buffer) - i + 1));
+	remnant = (char *)malloc(sizeof(char) * (ft_strlen(static_buffer) - i++ + 1));
 	if(!remnant)
 		return(NULL);
 	i++;
@@ -91,9 +95,9 @@ char *save_remnant(char *static_buffer)
 char *get_next_line(int fd)
 {
 	char            *line;
-	static char     *static_buffer ;
+	static char     *static_buffer;
     
-    if (fd < 0 || BUFFER_SIZE <= 0)
+    if (fd < 0 || BUFFER_SIZE < 0)
         return (NULL);
     static_buffer = StoreInStaticBuffer(fd, static_buffer);
     if(!static_buffer)
