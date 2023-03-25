@@ -1,18 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybayed <ybayed@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/08 14:12:32 by ybayed            #+#    #+#             */
-/*   Updated: 2023/03/25 01:52:23 by ybayed           ###   ########.fr       */
+/*   Created: 2023/03/25 01:42:19 by ybayed            #+#    #+#             */
+/*   Updated: 2023/03/25 02:00:17 by ybayed           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*storeinstaticbuffer(int fd, char *static_buffer)
 {
@@ -93,15 +91,15 @@ char	*save_remnant(char *static_buffer)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*static_buffer;
+	static char	*static_buffer[OPEN_MAX];
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	static_buffer = storeinstaticbuffer(fd, static_buffer);
-	if (!static_buffer)
+	static_buffer[fd] = storeinstaticbuffer(fd, static_buffer[fd]);
+	if (!static_buffer[fd])
 		return (NULL);
-	line = linefrombuffer(static_buffer);
-	static_buffer = save_remnant(static_buffer);
+	line = linefrombuffer(static_buffer[fd]);
+	static_buffer[fd] = save_remnant(static_buffer[fd]);
 	return (line);
 }
 
