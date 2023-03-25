@@ -6,28 +6,34 @@
 /*   By: ybayed <ybayed@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 14:12:32 by ybayed            #+#    #+#             */
-/*   Updated: 2023/03/24 15:11:00 by ybayed           ###   ########.fr       */
+/*   Updated: 2023/03/25 01:19:18 by ybayed           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
+char	*norminette_25(char *static_buffer)
+{
+	static_buffer = (char *)malloc(1 * sizeof(char));
+	static_buffer[0] = '\0';
+	return (static_buffer);
+}
+
 char	*ft_strjoin(char *static_buffer, char *buffer)
 {
 	size_t	i;
 	size_t	j;
+	size_t	len;
 	char	*str;
 
 	i = -1;
 	j = 0;
 	if (!static_buffer)
-	{
-		static_buffer = (char *)malloc(1 * sizeof(char));
-		static_buffer[0] = '\0';
-	}
+		static_buffer = norminette_25(static_buffer);
 	if (!static_buffer || !buffer)
 		return (NULL);
-	str = malloc(sizeof(char) * ((ft_strlen(static_buffer) + ft_strlen(buffer)) + 1));
+	len = (ft_strlen(static_buffer) + ft_strlen(buffer)) + 1;
+	str = malloc(sizeof(char) * len);
 	if (str == NULL)
 		return (NULL);
 	if (static_buffer)
@@ -69,4 +75,3 @@ char	*ft_strchr(char *static_buffer, int n)
 	}
 	return (0);
 }
-

@@ -6,7 +6,7 @@
 /*   By: ybayed <ybayed@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 14:12:32 by ybayed            #+#    #+#             */
-/*   Updated: 2023/03/25 00:54:13 by ybayed           ###   ########.fr       */
+/*   Updated: 2023/03/25 01:09:12 by ybayed           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ char *StoreInStaticBuffer(int fd, char *static_buffer)
 	if (!buffer)
 		return (NULL);
 	readed = 1;
-	while (!ft_strchr(static_buffer, '\n') && readed != 0)
+	while (!ft_strchr(static_buffer, '\n') && readed > 0)
 	{
 		readed = read(fd, buffer, BUFFER_SIZE);
-		if (readed == -1)
+		if (readed < 0)
 		{
 			free(static_buffer);
 			free(buffer);
@@ -44,7 +44,7 @@ char *LineFromBuffer(char *static_buffer)
 	char	*line;
 
 	i = 0;
-	if(!static_buffer)
+	if(!(*static_buffer))
 		return (NULL);
 	while(static_buffer[i] && static_buffer[i] != '\n')
 		i++;
@@ -58,7 +58,7 @@ char *LineFromBuffer(char *static_buffer)
 		i++;
 	}
 	if(static_buffer[i] == '\n')
-		ine[i++] = '\n';
+		line[i++] = '\n';
 	line[i] = '\0';
 	return (line);
 }
@@ -71,7 +71,7 @@ char *save_remnant(char *static_buffer)
 	i = 0;
 	while (static_buffer[i] && static_buffer[i] != '\n')
 		i++;
-	if(!static_buffer)
+	if(!*(static_buffer+i))
 	{
 		free(static_buffer);
 		return(NULL);
