@@ -15,7 +15,7 @@
  - **Prototype** : <p style = "color:red;">```char *get_next_line(int fd)```</p>
  - **Header File (** get_next_line.h **)** : must at least contain the prototype of the get_next_line() function.
  - **Files** : 
-   - [x] **Main File** **(** get_next_line.c **):** 
+   - **Main File** **(** get_next_line.c **):** 
    - **Header File (** get_next_line.h **)** : must at least contain the prototype of the get_next_line() function.
    - **Additional functions :** need to be in the <u>get_next_line_utils.c</u> file.
  - **External functs :**  ***read***, ***malloc***, ***free***.
