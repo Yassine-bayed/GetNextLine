@@ -55,4 +55,4 @@ Once passed, do not hesitate to add your<br>
 - [Before start resources](https://source.leet.ma/project?project=get_next_line)
 - [Handling a File by its Descriptor in C](https://www.codequoi.com/en/handling-a-file-by-its-descriptor-in-c/)
 - [EOF](https://ruslanspivak.com/eofnotchar/)
-- [WhiteBoard](https://www.tldraw.com/r/v2_c_k644zKgNiMAt3ND_6fl0G?viewport=-2106%2C2830%2C5877%2C4193&page=page%3A9mzWkM7V9rIcQPVzysxDQ)
+- [WhiteBoard]([https://www.tldraw.com/r/v2_c_k644zKgNiMAt3ND_6fl0G?viewport=-2106%2C2830%2C5877%2C4193&page=page%3A9mzWkM7V9rIcQPVzysxDQ](https://www.tldraw.com/s/v2_c_GKNQQxCT_iF3SXVik3RGe?viewport=-6689%2C-1378%2C13466%2C8259&page=page%3A9mzWkM7V9rIcQPVzysxDQ))
